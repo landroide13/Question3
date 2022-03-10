@@ -1,0 +1,15 @@
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/bin/Debug/net5.0/TicketingSystem.deps.json
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/bin/Debug/net5.0/TicketingSystem.runtimeconfig.json
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/bin/Debug/net5.0/TicketingSystem.runtimeconfig.dev.json
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/bin/Debug/net5.0/TicketingSystem.dll
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/bin/Debug/net5.0/ref/TicketingSystem.dll
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/bin/Debug/net5.0/TicketingSystem.pdb
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/obj/Debug/net5.0/TicketingSystem.csproj.AssemblyReference.cache
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/obj/Debug/net5.0/TicketingSystem.GeneratedMSBuildEditorConfig.editorconfig
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/obj/Debug/net5.0/TicketingSystem.AssemblyInfoInputs.cache
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/obj/Debug/net5.0/TicketingSystem.AssemblyInfo.cs
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/obj/Debug/net5.0/TicketingSystem.csproj.CoreCompileInputs.cache
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/obj/Debug/net5.0/TicketingSystem.dll
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/obj/Debug/net5.0/ref/TicketingSystem.dll
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/obj/Debug/net5.0/TicketingSystem.pdb
+/Users/landrade/Desktop/Whitecleffe/DataStructure/Assign1/Question3/TicketingSystem/obj/Debug/net5.0/TicketingSystem.genruntimeconfig.cache

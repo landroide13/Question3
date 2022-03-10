@@ -7,12 +7,12 @@ using System.Timers;
 
 namespace TicketingSystem
 {
-  class client{
+  class Client{
 
     static int ticNum = 0;
     private int ticketNum;
 
-    public client()
+    public Client()
     {
       ticNum++;
       this.ticketNum = ticNum;

@@ -11,36 +11,38 @@ namespace TicketingSystem
     {
 
         static Queue<object> customersQueue = new Queue<object>();
-
+        static int count = 0;
         static void displayQueue()
         {
-            Console.WriteLine("On Queue: ");
-            foreach(object el in customersQueue)
+            if(customersQueue.Count == 0)
             {
-                Console.WriteLine("Ticket Number:  " + el);
+             Console.WriteLine("No Customers on Queue");
+            }
+            else
+            {
+                Console.WriteLine("On Queue: ");
+                foreach(object el in customersQueue)
+                {
+                    Console.WriteLine("Ticket Number:  " + el);
+                }
             }
             Console.WriteLine();
-            
         }
 
         static void addClientsToQueue()
         {
             Console.WriteLine();
-
+            
             Client newClient = new Client();
-
             int ticketNum = newClient.getTicket();
 
             if (ticketNum <= 4)
             {
-              customersQueue.Enqueue(newClient.getTicket());
-              displayQueue();
-             }
-            else
-            {
-                Console.WriteLine("No more Customers Add to Queue..");
+                customersQueue.Enqueue(newClient.getTicket());
                 displayQueue();
+                count++;
             }
+            
         }
 
         static void seeNextCustomer()
@@ -53,33 +55,40 @@ namespace TicketingSystem
         {
             Console.WriteLine("######## Welcome to Ticket System App ###########");
 
-            Timer customerToQueueTimer = new Timer();
-            Timer seeCustomerTimer = new Timer();
+                Timer customerToQueueTimer = new Timer();
+                Timer seeCustomerTimer = new Timer();
 
 
-            customerToQueueTimer.Interval = 3000;
-            seeCustomerTimer.Interval = 5000;
-           
-            customerToQueueTimer.Elapsed += new ElapsedEventHandler(tmrTimersTimer_Elapsed); 
-            seeCustomerTimer.Elapsed += new ElapsedEventHandler(tmrTimersTimer_Elapsed2);
-            
-            customerToQueueTimer.Start();
+                customerToQueueTimer.Interval = 3000;
+                seeCustomerTimer.Interval = 5000;
 
-            seeCustomerTimer.Start();
-            
-            Console.Read();
+                customerToQueueTimer.Elapsed += new ElapsedEventHandler(Timer);
+                seeCustomerTimer.Elapsed += new ElapsedEventHandler(Timer2);
 
-            Console.Read();
-            
+                customerToQueueTimer.Start();
+                seeCustomerTimer.Start();
+
+                Console.Read();
+
+                if(count >= 4)
+                {
+                    Console.WriteLine("Timer Stop..");
+                    customerToQueueTimer.Stop();
+                    seeCustomerTimer.Stop();
+
+                    customerToQueueTimer.Dispose();
+                    seeCustomerTimer.Dispose();
+                }
+
         }
 
-        private static void tmrTimersTimer_Elapsed2(object sender, System.Timers.ElapsedEventArgs e)
+         static void Timer2(object sender, System.Timers.ElapsedEventArgs e)
         {
             seeNextCustomer();
             displayQueue();
         }
 
-         private static void tmrTimersTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+         static void Timer(object sender, System.Timers.ElapsedEventArgs e)
         {
             addClientsToQueue();
         }

@@ -14,40 +14,40 @@ namespace TicketingSystem
 
         static void displayQueue()
         {
-            Console.WriteLine("On the Queue: " + customersQueue.Count);
-
+            Console.WriteLine("On Queue: ");
             foreach(object el in customersQueue)
             {
-                Console.Write(" " + el);
+                Console.WriteLine("Ticket Number:  " + el);
             }
-
             Console.WriteLine();
+            
         }
 
         static void addClientsToQueue()
         {
+            Console.WriteLine();
+
             Client newClient = new Client();
-            customersQueue.Enqueue(newClient.getTicket());
+
+            int ticketNum = newClient.getTicket();
+
+            if (ticketNum <= 4)
+            {
+              customersQueue.Enqueue(newClient.getTicket());
+              displayQueue();
+             }
+            else
+            {
+                Console.WriteLine("No more Customers Add to Queue..");
+                displayQueue();
+            }
         }
 
         static void seeNextCustomer()
         {
             Console.WriteLine();
-            displayQueue();
-            customersQueue.Dequeue();
+            Console.WriteLine("Sales Assistant is ready to see the next customer, Number: "  + customersQueue.Dequeue());
         }
-
-        // static void SetTimer(int time)
-        // {
-
-        //     Timer seeCustomerTimer = new Timer();
-        //     seeCustomerTimer.Interval = time; //set the interval to 3 seconds
-        //     seeCustomerTimer.Elapsed += new ElapsedEventHandler(tmrTimersTimer_Elapsed); //run the code in the tmrTimersTimer_Elapsed every 3 seconds until keypress
-        //     seeCustomerTimer.Start();
-        //     Console.Read();
-
-        // }
-
 
         static void Main(string[] args)
         {
@@ -60,38 +60,29 @@ namespace TicketingSystem
             customerToQueueTimer.Interval = 3000;
             seeCustomerTimer.Interval = 5000;
            
-
-            seeCustomerTimer.Elapsed += new ElapsedEventHandler(tmrTimersTimer_Elapsed2);
             customerToQueueTimer.Elapsed += new ElapsedEventHandler(tmrTimersTimer_Elapsed); 
+            seeCustomerTimer.Elapsed += new ElapsedEventHandler(tmrTimersTimer_Elapsed2);
             
-            seeCustomerTimer.Start();
             customerToQueueTimer.Start();
 
+            seeCustomerTimer.Start();
+            
             Console.Read();
 
             Console.Read();
-            
             
         }
 
         private static void tmrTimersTimer_Elapsed2(object sender, System.Timers.ElapsedEventArgs e)
         {
-            Console.WriteLine("Sales Assistant is ready to see the next customer.");
-
             seeNextCustomer();
+            displayQueue();
         }
 
          private static void tmrTimersTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            Console.WriteLine("New customer Arrived");
-
             addClientsToQueue();
-
-            displayQueue();
-          
         }
-
-
 
 
     }

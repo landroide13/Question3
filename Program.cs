@@ -39,8 +39,8 @@ namespace TicketingSystem
             if (ticketNum <= 4)
             {
                 customersQueue.Enqueue(newClient.getTicket());
-                displayQueue();
                 count++;
+                displayQueue();
             }
             
         }
@@ -48,7 +48,7 @@ namespace TicketingSystem
         static void seeNextCustomer()
         {
             Console.WriteLine();
-            Console.WriteLine("Sales Assistant is ready to see the next customer, Number: "  + customersQueue.Dequeue());
+            Console.WriteLine("Sales Assistant is ready to see the next customer, Ticket Number: "  + customersQueue.Dequeue());
         }
 
         static void Main(string[] args)
@@ -62,37 +62,35 @@ namespace TicketingSystem
                 customerToQueueTimer.Interval = 3000;
                 seeCustomerTimer.Interval = 5000;
 
-                customerToQueueTimer.Elapsed += new ElapsedEventHandler(Timer);
-                seeCustomerTimer.Elapsed += new ElapsedEventHandler(Timer2);
+                // customerToQueueTimer.Elapsed += Timer;
+                customerToQueueTimer.Elapsed += (object sender, System.Timers.ElapsedEventArgs e) =>
+                {
+                    addClientsToQueue();
+                    
+                  if(count >= 4 && customersQueue.Count == 0)
+                    {
+                        customerToQueueTimer.Stop();
+                        seeCustomerTimer.Stop();
+
+                        customerToQueueTimer.Dispose();
+                        seeCustomerTimer.Dispose();
+
+                        Console.WriteLine("Queue Empty and more Customers...");
+                    }
+                };
+
+                // seeCustomerTimer.Elapsed += Timer2;
+                seeCustomerTimer.Elapsed += (object sender, System.Timers.ElapsedEventArgs e) =>
+                { 
+                    seeNextCustomer();
+                    displayQueue();
+                };
 
                 customerToQueueTimer.Start();
                 seeCustomerTimer.Start();
 
                 Console.Read();
-
-                if(count >= 4)
-                {
-                    Console.WriteLine("Timer Stop..");
-                    customerToQueueTimer.Stop();
-                    seeCustomerTimer.Stop();
-
-                    customerToQueueTimer.Dispose();
-                    seeCustomerTimer.Dispose();
-                }
-
         }
-
-         static void Timer2(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            seeNextCustomer();
-            displayQueue();
-        }
-
-         static void Timer(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            addClientsToQueue();
-        }
-
 
     }
 }
